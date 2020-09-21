@@ -11,3 +11,4 @@ const getMyAge = (input: any): number => {
 };
 
 getMyAge(2222);
+getMyAge("1990");

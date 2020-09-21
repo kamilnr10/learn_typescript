@@ -1,9 +1,6 @@
-// Stwórz funkcje, które będą działać identycznie co metody wbudowane
-// ale będą działać przy pomocy pętli for lub while
-
 const arrayOfNumbers = [2, 3, 12, 53, 8, 1];
 
-function mapFn(array, callback) {
+function mapFn(array: any[], callback) {
   let mapArray = [];
   for (let i = 0; i < array.length; i++) {
     const result = callback(array[i], i, array);
