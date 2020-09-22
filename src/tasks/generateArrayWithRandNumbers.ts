@@ -1,4 +1,4 @@
-interface Numbers {
+interface INumbers {
   howManyArrays: number;
   howManyNumbers: number;
   min: number;
@@ -10,11 +10,16 @@ function generateArrayWithRandomNumbers({
   min,
   max,
 }: Numbers): number[] {
+  // zła walidacja
+  // NaN typu number ->
+  // jaki nie może być howManyNumbers
   if (!howManyNumbers || !min || !max) {
     throw new Error(`Three arguments are needed`);
   }
 
-  return [...Array(howManyNumbers)].map((el) => {
+  const toMap: Array<number> = [...Array(howManyNumbers)];
+
+  return toMap.map((el) => {
     const rangeOfNumbers = Math.floor(Math.random() * (max - min + 1) + min);
     return rangeOfNumbers;
   });

@@ -3,6 +3,10 @@
 
 const arrayOfNumbers = [2, 3, 12, 53, 8, 1];
 
+// wszystko do poprawy
+// any - nie moze być any
+// każda funkcja powinna mieć typ generyczny
+
 function mapFn(array: any[], callback: () => void) {
   let mapArray = [];
   for (let i = 0; i < array.length; i++) {

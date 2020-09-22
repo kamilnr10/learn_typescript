@@ -4,7 +4,15 @@
 
 const inputData = ["stwórz", "sobie", "tutaj", "więcej", "wyrazów"];
 
-function findPhraseInArray(array: string[], word: string) {
+// generyczny typ
+//
+function findPhraseInArray(array: string[], word: string): string {
+  // brak walidacji - czy word nie jest pusty
+
+  // includes jest słabe - case sensitive
+  // w jednej pętli -.splice i .findIndex
+  // wyszukiwanie w stringu przez regexp
+
   if (array.includes(word)) {
     return `Word: ${word} is in Array. Index of this word is: ${array.indexOf(
       word
