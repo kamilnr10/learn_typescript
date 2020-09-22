@@ -1,7 +1,11 @@
 // Utwórz funkcję, która jako argumenty przyjmie trzy liczby. Funkcja powinna zwrócić true jeśli z odcinków o długości przekazanych w argumentach
 // można zbudować trójkąt prostokątny, lub informację że z podanych długości nie można utworzyć trójkąta prostokątnego
 
-function isRectangularTriangle(x1: number, x2: number, x3: number) {
+function isRectangularTriangle(
+  x1: number,
+  x2: number,
+  x3: number
+): boolean | string {
   if (!x1 || !x2 || !x3) {
     throw new Error("Three arguments are needed");
   }
