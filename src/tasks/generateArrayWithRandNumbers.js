@@ -5,23 +5,29 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-function generateArrayWithRandomNumbers(quantityOfNumbers, min, max) {
-    if (!quantityOfNumbers || !min || !max) {
+function generateArrayWithRandomNumbers(_a) {
+    var howManyNumbers = _a.howManyNumbers, min = _a.min, max = _a.max;
+    if (!howManyNumbers || !min || !max) {
         throw new Error("Three arguments are needed");
     }
-    return __spreadArrays(Array(quantityOfNumbers)).map(function (el) {
+    return __spreadArrays(Array(howManyNumbers)).map(function (el) {
         var rangeOfNumbers = Math.floor(Math.random() * (max - min + 1) + min);
         return rangeOfNumbers;
     });
 }
-console.log(generateArrayWithRandomNumbers(4, 5, 10));
-console.log(generateArrayWithRandomNumbers(8, 2, 10));
-var generateArrayOfArrays = function (howManyArrays, howManyNumbers, min, max) {
-    return __spreadArrays(Array(howManyArrays)).map(function (el) {
-        return __spreadArrays(Array(howManyNumbers)).map(function (el) {
-            var rangeOfNumbers = Math.floor(Math.random() * (max - min + 1) + min);
+var numbersToGenerateArray = {
+    howManyArrays: 4,
+    howManyNumbers: 10,
+    min: 5,
+    max: 50
+};
+console.log(generateArrayWithRandomNumbers(numbersToGenerateArray));
+var generateArrayOfArrays = function (numbers) {
+    return __spreadArrays(Array(numbers.howManyArrays)).map(function (el) {
+        return __spreadArrays(Array(numbers.howManyNumbers)).map(function (el) {
+            var rangeOfNumbers = Math.floor(Math.random() * (numbers.max - numbers.min + 1) + numbers.min);
             return rangeOfNumbers;
         });
     });
 };
-console.log(generateArrayOfArrays(3, 5, 3, 9));
+console.log(generateArrayOfArrays(numbersToGenerateArray));

@@ -1,33 +1,43 @@
-function generateArrayWithRandomNumbers(
-  quantityOfNumbers: number,
-  min: number,
-  max: number
-): number[] {
-  if (!quantityOfNumbers || !min || !max) {
+interface Numbers {
+  howManyArrays: number;
+  howManyNumbers: number;
+  min: number;
+  max: number;
+}
+
+function generateArrayWithRandomNumbers({
+  howManyNumbers,
+  min,
+  max,
+}: Numbers): number[] {
+  if (!howManyNumbers || !min || !max) {
     throw new Error(`Three arguments are needed`);
   }
 
-  return [...Array(quantityOfNumbers)].map((el) => {
+  return [...Array(howManyNumbers)].map((el) => {
     const rangeOfNumbers = Math.floor(Math.random() * (max - min + 1) + min);
     return rangeOfNumbers;
   });
 }
 
-console.log(generateArrayWithRandomNumbers(4, 5, 10));
-console.log(generateArrayWithRandomNumbers(8, 2, 10));
+const numbersToGenerateArray: Numbers = {
+  howManyArrays: 4,
+  howManyNumbers: 10,
+  min: 5,
+  max: 50,
+};
 
-const generateArrayOfArrays = (
-  howManyArrays: number,
-  howManyNumbers: number,
-  min: number,
-  max: number
-): number[][] => {
-  return [...Array(howManyArrays)].map((el) => {
-    return [...Array(howManyNumbers)].map((el) => {
-      const rangeOfNumbers = Math.floor(Math.random() * (max - min + 1) + min);
+console.log(generateArrayWithRandomNumbers(numbersToGenerateArray));
+
+const generateArrayOfArrays = (numbers: Numbers): number[][] => {
+  return [...Array(numbers.howManyArrays)].map((el) => {
+    return [...Array(numbers.howManyNumbers)].map((el) => {
+      const rangeOfNumbers = Math.floor(
+        Math.random() * (numbers.max - numbers.min + 1) + numbers.min
+      );
       return rangeOfNumbers;
     });
   });
 };
 
-console.log(generateArrayOfArrays(3, 5, 3, 9));
+console.log(generateArrayOfArrays(numbersToGenerateArray));
