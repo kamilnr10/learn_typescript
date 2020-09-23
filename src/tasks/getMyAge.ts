@@ -2,8 +2,7 @@
 // co gdy input jest np - "1990" / 1990 / new Date(1990)
 type possibleInputs = Date | string | number;
 const getMyAge = (input: possibleInputs): number => {
-  const date = new Date();
-  const actualYear = date.getFullYear();
+  const actualYear = new Date().getFullYear();
   if (input <= 0) {
     throw new Error("Input should not be less or equal to 0");
   }
