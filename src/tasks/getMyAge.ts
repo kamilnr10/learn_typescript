@@ -4,8 +4,8 @@ type possibleInputs = Date | string | number;
 const getMyAge = (input: possibleInputs): number => {
   const date = new Date();
   const actualYear = date.getFullYear();
-  if (!input) {
-    throw new Error(`Input cannot be empty`);
+  if (input <= 0) {
+    throw new Error("Input should not be less or equal to 0");
   }
   if (input > actualYear) {
     throw new Error(`Input should be less or equal to actual year`);
