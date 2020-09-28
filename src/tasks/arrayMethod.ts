@@ -7,7 +7,12 @@ const arrayOfNumbers = [2, 3, 12, 53, 8, 1];
 // any - nie moze być any
 // każda funkcja powinna mieć typ generyczny
 
-function mapFn(array: any[], callback: () => void) {
+type genericArray<T> = Array<T>;
+type possibleArgumentsForCallback<T> = Array<T> | number | string;
+function mapFn<T>(
+  array: genericArray<T>,
+  callback: possibleArgumentsForCallback<T>
+): genericArray<T> {
   let mapArray = [];
   for (let i = 0; i < array.length; i++) {
     const result = callback(array[i], i, array);

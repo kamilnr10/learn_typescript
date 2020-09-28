@@ -2,15 +2,22 @@ function generateArrayWithRandomNumbers(
   howManyNumbers: number,
   min: number,
   max: number
-): number[] {
+): Array<number> {
   // zła walidacja
   // NaN typu number ->
   // jaki nie może być howManyNumbers
-  if (howManyNumbers <= 0) {
-    throw new Error("Inputs should be positive numbers");
+  if (
+    typeof howManyNumbers !== "number" ||
+    typeof min !== "number" ||
+    typeof max !== "number"
+  ) {
+    throw new Error("Arguments should be type of Number");
   }
-  if (isNaN(howManyNumbers) || isNaN(min) || isNaN(max)) {
-    throw new Error("Input should not be type of NaN");
+  if (howManyNumbers <= 0) {
+    throw new Error("First argument should be positive number");
+  }
+  if (Number.isNaN(howManyNumbers) || Number.isNaN(min) || Number.isNaN(max)) {
+    throw new Error("Inputs cant be type of NaN");
   }
 
   // do wytłumaczenia
