@@ -24,28 +24,22 @@ function findPhraseInArray(array: string[], word: string): string {
 
 type arrayOfWords = Array<string>;
 
-function findWord(array: arrayOfWords, word: string) {
+function findWord(array: arrayOfWords, phrase: string) {
   if (!array.length) {
     throw new Error("Array cant be empty");
   }
-  if (!Array.isArray(array)) {
-    throw new Error("First argument should be an array");
-  }
-  for (let element of array) {
-    if (typeof element !== "string") {
-      throw new Error("Array should contains elements type of string");
-    }
-  }
-  if (typeof word !== "string") {
-    throw new Error("Second argument shoul be type of string");
-  }
-  if (word.length < 3) {
+
+  if (phrase.length < 3) {
     throw new Error("Second argument should be at least 3 char length");
   }
+
+  // find index by .indexOf albo regexp
+  // .reduce
   const searchWordInArray = array.find((item) => {
     if (word === item) return true;
     else return false;
   });
+
   const searchIndexOfWord = array.findIndex(
     (item) => item.toLocaleLowerCase().indexOf(word) > -1
   );
