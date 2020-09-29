@@ -36,12 +36,12 @@ function findWord(array: arrayOfWords, phrase: string) {
   // find index by .indexOf albo regexp
   // .reduce
   const searchWordInArray = array.find((item) => {
-    if (word === item) return true;
+    if (phrase === item) return true;
     else return false;
   });
 
   const searchIndexOfWord = array.findIndex(
-    (item) => item.toLocaleLowerCase().indexOf(word) > -1
+    (item) => item.toLocaleLowerCase().indexOf(phrase) > -1
   );
   return `Index of ${searchWordInArray} is ${searchIndexOfWord}`;
 }

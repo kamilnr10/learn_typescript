@@ -5,16 +5,14 @@ function isRectangularTriangle(x1: number, x2: number, x3: number): boolean {
   if (isNaN(x1 * x2 * x3)) {
     throw new Error("Inputs cannot be NaN");
   }
+  if (x1 + x2 <= x3 || x1 + x3 <= x2 || x2 + x3 <= x1) {
+    throw new Error(
+      "From declared arguments there is no way to build triangle"
+    );
+  }
   const [a, b, c] = Array.from(arguments).sort((a, b) => a - b);
-
-  // console.log(Array.from(arguments));
   if (a <= 0) {
     throw new Error("Inputs should be positive numbers");
-  }
-  if (a + b <= c && a + c <= b && b + c <= a) {
-    throw new Error(
-      "From declared arguments there is no way to build rectangular triangle"
-    );
   }
   const rectangularTriangle =
     Math.pow(a, 2) + Math.pow(b, 2) === Math.pow(c, 2);

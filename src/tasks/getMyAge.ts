@@ -15,7 +15,7 @@
 // getMyAge(2222);
 // getMyAge("1990");
 
-const throwError = (condition: any, error: string) => {
+const throwError = (condition: boolean, error: string) => {
   if (condition) throw new Error(error);
 };
 
@@ -23,9 +23,8 @@ type possibleInputs = string | Date | number;
 
 function getMyAge(input: possibleInputs) {
   const actualYear = new Date().getFullYear();
-  throwError(Number.isNaN(input), "Input cannot be NaN");
   if (input instanceof Date) {
-    throwError(input.getTime() !== input.getTime(), "Wrong date format");
+    throwError(isNaN(input.getTime()), "Wrong date format");
     const yearOfInput = input.getFullYear();
     return actualYear - yearOfInput;
   }
@@ -34,10 +33,15 @@ function getMyAge(input: possibleInputs) {
       Number.isNaN(parseInt(input)),
       "String cant be parsed into number"
     );
+    throwError(
+      Number(input) > actualYear,
+      "Input cant be more than actual year"
+    );
     const yearOfInput = parseInt(input);
     return actualYear - yearOfInput;
   }
   if (typeof input === "number") {
+    throwError(Number.isNaN(input), "Input cannot be NaN");
     return actualYear - input;
   } else throw new Error("Bad type of input");
 }
