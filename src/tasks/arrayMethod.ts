@@ -29,11 +29,11 @@ type filterCallback<T> = (
   array: Array<T>
 ) => boolean;
 
-function filterFn(array, callback) {
+function filterFn<T>(array: Array<T>, callback: filterCallback<T>): Array<T> {
   const filterArr = [];
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     const result = callback(array[i], i, array);
-    if (result) filterArr.push(arr[i]);
+    if (result) filterArr.push(array[i]);
   }
   return filterArr;
 }
@@ -45,12 +45,17 @@ type reduceCallback<T, G> = (
   array: Array<T>
 ) => G;
 
-function reduceFn(array, callback, initial) {
+function reduceFn<T, G>(
+  array: Array<T>,
+  callback: reduceCallback<T, G>,
+  initial: T
+): G {
   // zła logika reduce
-  let acc = initial === undefined ? 0 : initial;
+  let accumulator = initial === undefined ? 0 : initial;
   for (let i = 0; i < array.length; i++) {
-    acc = callback(acc, array[i], i, array);
-    return acc;
+    // czemy wy
+    accumulator = callback(accumulator, array[i], i, array);
+    return accumulator;
   }
 }
 
